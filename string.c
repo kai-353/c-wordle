@@ -25,3 +25,25 @@ void print_string(String str) {
     }
     printf("\n");
 }
+
+uint32_t max(const uint32_t a, const uint32_t b) {
+    return (a > b) ? a : b;
+}
+
+int compare_strings(const String *str1, const String *str2) {
+    for (uint32_t i = 0; i < max(str1->length, str2->length); i++) {
+        // final characters are equal
+        if (str1->chars[i] == str2->chars[i] && i == str1->length - 1 && i == str2->length - 1) {
+            return 0;
+        }
+        // str1 > str2
+        if (str1->chars[i] > str2->chars[i]) {
+            return 1;
+        }
+        // str1 < str2
+        if (str1->chars[i] < str2->chars[i]) {
+            return -1;
+        }
+    }
+    return 0;
+}
